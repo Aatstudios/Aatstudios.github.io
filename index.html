@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evanico Concept Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000100;
+            --accent-color: rgb(255, 102, 0);
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --light-bg: #ffffff;
+            --border-color: #eaeaea;
+            --footer-bg: #000100;
+        }
+
+        body.dark {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --light-bg: #1e1e1e;
+            --border-color: #333;
+            --footer-bg: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 0.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Header actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Toggle switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-label {
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        /* User bar */
+        .user-bar {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user-bar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 200px;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-dropdown a {
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-dropdown a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .user-bar.active .user-dropdown {
+            display: flex;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-color);
+        }
+
+        /* Main Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        /* Services Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .service-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-content {
+            padding: 2rem;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .footer-column p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100vh;
+            background: var(--primary-color);
+            padding: 100px 2rem 2rem;
+            z-index: 999;
+            transition: left 0.3s ease;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Login Popup Styles */
+        .login-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .login-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .login-container {
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 420px;
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: transform 0.4s;
+        }
+
+        .login-popup.active .login-container {
+            transform: translateY(0);
+        }
+
+        .login-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .close-login {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .close-login:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .login-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #777;
+            background: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+
+        .login-tab.active {
+            background: var(--light-bg);
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .login-form-container {
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border 0.3s;
+            background: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .login-btn:hover {
+            background: #e59400;
+        }
+
+        .login-links {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .login-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .login-divider span {
+            padding: 0 12px;
+        }
+
+        .social-login-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .google { background: #DB4437; }
+        .facebook { background: #4267B2; }
+        .twitter { background: #1DA1F2; }
+
+        /* Animation for the popup */
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .login-container {
+            animation: popIn 0.4s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            header {
+                justify-content: space-between;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .header-actions {
+                gap: 0.5rem;
+            }
+
+            .toggle-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-content, .about-content {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-container {
+                width: 95%;
+            }
+            
+            .login-form-container {
+                padding: 20px;
+            }
+            
+            .social-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="logo">Evanico <span>Concept</span></div>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#" class="login-link"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <div class="toggle-container">
+                <span class="toggle-label">Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="user-bar" id="userBar">
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User" id="userImage">
+                <div class="user-dropdown">
+                    <a href="#"><i class="fas fa-user-circle"></i>Manage Account</a>
+                    <a href="Settings.html"><i class="fas fa-cog"></i>Settings</a>
+                    <a href="#" class="login-link"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i>Cart (0)</a>
+                    <a href="#"><i class="fas fa-question-circle"></i>Help</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Login Popup -->
+    <div class="login-popup" id="loginPopup">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+                <div class="close-login" id="closeLogin">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" data-tab="login">Login</div>
+                <div class="login-tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <div class="login-form-container">
+                <!-- Login Form -->
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">Sign In</button>
+                    
+                    <div class="login-links">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                    
+                    <div class="login-divider">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <div class="social-login-buttons">
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="login-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I agree to the Terms & Conditions</label>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">Create Account</button>
+                    
+                    <div class="login-divider">
+                        <span>Or sign up with</span>
+                    </div>
+                    
+                    <div class="social-login-buttons">
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>We Serve You The Best</h1>
+        <p>Where quality meets satisfaction. Experience premium services tailored to your needs.</p>
+        <a href="#services" class="cta-button">Explore Our Services</a>
+    </section>
+
+    <div class="container">
+        <section id="services">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Discover our range of premium services designed to meet your needs</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Food Services</h3>
+                        <p>Delicious meals prepared with the finest ingredients, delivered right to your doorstep.</p>
+                        <a href="food.html" class="service-link">Explore Food Options <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Housing Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Housing Solutions</h3>
+                        <p>Find your perfect home from our selection of premium properties available for rent.</p>
+                        <a href="test.html" class="service-link">View Properties <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Raw Food">
+                    </div>
+                    <div class="service-content">
+                        <h3>Raw Food Supplies</h3>
+                        <p>High-quality raw ingredients sourced directly from trusted suppliers for your convenience.</p>
+                        <a href="index.html" class="service-link">Browse Selection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Learn more about our company and what drives us</p>
+            </div>
+            <div class="about">
+                <div class="about-content">
+                    <h2>Evanico Concept Ltd</h2>
+                    <p>We are committed to delivering top-quality services and products that meet your needs. Our mission is to ensure satisfaction and trust through professionalism and innovation.</p>
+                    <p>With years of experience in the industry, we've built a reputation for excellence and reliability. Our team of experts is dedicated to providing solutions that exceed expectations.</p>
+                    <a href="contact.html" class="cta-button">Get In Touch</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Evanico Concept">
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover the benefits of working with our company</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>We maintain the highest standards in all our products and services.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Timely service delivery to meet your needs and schedule.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is always ready to assist you.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Your satisfaction and security are our top priorities.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Evanico Concept Ltd</h3>
+                <p>Providing premium services and products to meet your needs with quality and reliability.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="food.html"><i class="fas fa-utensils"></i> Food Services</a></li>
+                    <li><a href="test.html"><i class="fas fa-building"></i> Housing Solutions</a></li>
+                    <li><a href="index.html"><i class="fas fa-carrot"></i> Raw Food Supplies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Main Street, City</a></li>
+                    <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +123 456 7890</a></li>
+                    <li><a href="mailto:info@evanico.com"><i class="fas fa-envelope"></i> info@evanico.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Evanico Concept Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const darkToggle = document.getElementById('darkToggle');
+        const userImage = document.getElementById('userImage');
+        const userBar = document.getElementById('userBar');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            darkToggle.checked = true;
+        }
+        
+        darkToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+
+        // User bar functionality - keeps dropdown open when hovered or clicked
+        userBar.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+        });
+        
+        userBar.addEventListener('mouseenter', function() {
+            this.classList.add('active');
+        });
+        
+        userBar.addEventListener('mouseleave', function() {
+            // Only close if not clicked to stay open
+            if (!this.classList.contains('active-by-click')) {
+                this.classList.remove('active');
+            }
+        });
+        
+        // Close user dropdown when clicking elsewhere
+        document.addEventListener('click', function(e) {
+            if (!userBar.contains(e.target)) {
+                userBar.classList.remove('active');
+                userBar.classList.remove('active-by-click');
+            }
+        });
+        
+        // Toggle active-by-click class for user bar
+        userBar.addEventListener('click', function() {
+            this.classList.toggle('active-by-click');
+        });
+
+        // Check if user is logged in and update user image accordingly
+        function checkLoginStatus() {
+            // This is a placeholder - you would typically check cookies or local storage
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (!isLoggedIn) {
+                userImage.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png"; // Default user icon for logged out users
+                
+                // Update dropdown for logged out users
+                const userDropdown = document.querySelector('.user-dropdown');
+                userDropdown.innerHTML = `
+                    <a href="#" class="login-link"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a href="#"><i class="fas fa-user-plus"></i>Register</a>
+                    <a href="#"><i class="fas fa-question-circle"></i>Help</a>
+                `;
+            } else {
+                userImage.src = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"; // User icon for logged in users
+            }
+        }
+
+        // Login Popup functionality
+        const loginPopup = document.getElementById('loginPopup');
+        const closeLogin = document.getElementById('closeLogin');
+        const loginTabs = document.querySelectorAll('.login-tab');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        
+        // Function to open login popup
+        function openLoginPopup() {
+            loginPopup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+        
+        // Function to close login popup
+        function closeLoginPopup() {
+            loginPopup.classList.remove('active');
+            document.body.style.overflow = ''; // Enable scrolling
+        }
+        
+        // Close popup when clicking on close button
+        closeLogin.addEventListener('click', closeLoginPopup);
+        
+        // Close popup when clicking outside the container
+        loginPopup.addEventListener('click', function(e) {
+            if (e.target === loginPopup) {
+                closeLoginPopup();
+            }
+        });
+        
+        // Switch between login and signup tabs
+        loginTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                loginTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show appropriate form
+                if (this.dataset.tab === 'login') {
+                    loginForm.style.display = 'block';
+                    signupForm.style.display = 'none';
+                } else {
+                    loginForm.style.display = 'none';
+                    signupForm.style.display = 'block';
+                }
+            });
+        });
+        
+        // Form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Here you would typically validate and send to server
+            console.log('Login attempt:', email, password);
+            
+            // Simulate successful login
+            localStorage.setItem('isLoggedIn', 'true');
+            alert('Login successful! Welcome back.');
+            closeLoginPopup();
+            checkLoginStatus();
+        });
+        
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Here you would typically validate and send to server
+            console.log('Signup attempt:', name, email, password);
+            
+            // Simulate successful signup
+            localStorage.setItem('isLoggedIn', 'true');
+            alert('Account created successfully! Welcome to Evanico Concept.');
+            closeLoginPopup();
+            checkLoginStatus();
+        });
+        
+        // Add event listeners to all login links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add login-link class to existing login links
+            const loginLinks = document.querySelectorAll('a[href="Login.html"], .user-dropdown a, .mobile-nav-links a');
+            
+            loginLinks.forEach(link => {
+                if (link.textContent.includes('Login') || link.innerHTML.includes('fa-sign-in-alt')) {
+                    link.classList.add('login-link');
+                    link.href = '#';
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openLoginPopup();
+                    });
+                }
+            });
+            
+            // Initialize page with saved settings
+            checkLoginStatus();
+        });
+        
+        // Load saved settings from localStorage
+        function loadSettings() {
+            // Theme settings
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark');
+                if (document.getElementById('darkToggle')) {
+                    document.getElementById('darkToggle').checked = true;
+                }
+            }
+            
+            // Color scheme
+            const savedColorScheme = localStorage.getItem('colorScheme');
+            if (savedColorScheme) {
+                document.documentElement.style.setProperty('--accent-color', savedColorScheme);
+            }
+            
+            // Font size
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                document.documentElement.style.setProperty('--font-size', savedFontSize);
+            }
+            
+            // Font family
+            const savedFontFamily = localStorage.getItem('fontFamily');
+            if (savedFontFamily) {
+                document.documentElement.style.setProperty('--font-family', savedFontFamily);
+            }
+            
+            // Update user info if available
+            const savedUserName = localStorage.getItem('userName');
+            const savedUserEmail = localStorage.getItem('userEmail');
+            const savedUserPhone = localStorage.getItem('userPhone');
+            
+            // You can use these values to update user info displays on the page
+            console.log('User settings loaded:', {savedUserName, savedUserEmail, savedUserPhone});
+        }
+        
+        // Initialize page with saved settings
+        document.addEventListener('DOMContentLoaded', loadSettings);
+    </script>
+</body>
+</html>
