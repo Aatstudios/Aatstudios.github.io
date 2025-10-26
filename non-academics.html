@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Faith Academy Ogba</title>
+    <title>Non-Academics | Faith Academy Ogba</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,8 +14,7 @@
             <h2>FA OGBA</h2>
         </div>
         <ul class="menu">
-            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-            
+            <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-user-graduate"></i> Students <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -25,7 +24,6 @@
                     <li><a href="students.html?filter=boarding">Boarding Students</a></li>
                 </ul>
             </li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-chalkboard"></i> Classrooms <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -35,7 +33,6 @@
                     <li><a href="class-assignments.html">Class Assignments</a></li>
                 </ul>
             </li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-chalkboard-teacher"></i> Teachers <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -45,7 +42,6 @@
                     <li><a href="teacher-attendance.html">Attendance</a></li>
                 </ul>
             </li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-book"></i> Subjects <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -55,7 +51,6 @@
                     <li><a href="subject-assignments.html">Subject Allocation</a></li>
                 </ul>
             </li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-chart-line"></i> Scoresheet <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -65,21 +60,17 @@
                     <li><a href="scoresheet.html?term=third">Third Term</a></li>
                 </ul>
             </li>
-            
             <li><a href="subject-comments.html"><i class="fas fa-comment-alt"></i> Subject Comments</a></li>
-            
-            <li class="menu-item has-submenu">
+            <li class="menu-item has-submenu active">
                 <a href="#"><i class="fas fa-music"></i> Non-Academics <i class="fas fa-chevron-down dropdown-icon"></i></a>
-                <ul class="submenu">
-                    <li><a href="non-academics.html">Activities</a></li>
+                <ul class="submenu active">
+                    <li><a href="non-academics.html" class="active">Activities</a></li>
                     <li><a href="sports.html">Sports</a></li>
                     <li><a href="clubs.html">Clubs & Societies</a></li>
                     <li><a href="events.html">School Events</a></li>
                 </ul>
             </li>
-            
             <li><a href="broadsheet.html"><i class="fas fa-file-alt"></i> Broadsheet</a></li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-laptop"></i> E-Learning <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -89,7 +80,6 @@
                     <li><a href="online-classes.html">Online Classes</a></li>
                 </ul>
             </li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-chart-bar"></i> Analysis <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -99,9 +89,7 @@
                     <li><a href="trends.html">Trend Analysis</a></li>
                 </ul>
             </li>
-            
             <li><a href="cbt.html"><i class="fas fa-desktop"></i> CBT</a></li>
-            
             <li class="menu-item has-submenu">
                 <a href="#"><i class="fas fa-users"></i> Users <i class="fas fa-chevron-down dropdown-icon"></i></a>
                 <ul class="submenu">
@@ -111,7 +99,6 @@
                     <li><a href="user-activity.html">User Activity</a></li>
                 </ul>
             </li>
-            
             <li><a href="staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
         </ul>
     </div>
@@ -120,19 +107,14 @@
         <header>
             <div class="header-left">
                 <button class="toggle-menu"><i class="fas fa-bars"></i></button>
-                <h1>Dashboard Module</h1>
-                <p>New summary information about your school.</p>
+                <h1>Non-Academic Activities</h1>
             </div>
             <div class="header-right">
                 <div class="search-box">
-                    <input type="text" placeholder="Type here to search...">
+                    <input type="text" placeholder="Search activities...">
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="user-info">
-                    <div class="notification">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count">3</span>
-                    </div>
                     <span>Yekini Damilola</span>
                     <img src="img/user.png" alt="User">
                 </div>
@@ -140,122 +122,107 @@
         </header>
 
         <div class="content-wrapper">
-            <!-- Quick Stats Section -->
-            <section class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Total Students</h3>
-                            <p class="stat-number">218</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 12% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon male">
-                            <i class="fas fa-male"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Male Students</h3>
-                            <p class="stat-number">98</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 5% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon female">
-                            <i class="fas fa-female"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Female Students</h3>
-                            <p class="stat-number">120</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 8% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Teachers</h3>
-                            <p class="stat-number">35</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 2 new this term</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div class="page-actions">
+                <h2>Activities Management</h2>
+                <button id="addActivityBtn"><i class="fas fa-plus"></i> Add Activity</button>
+            </div>
 
-            <!-- Recent Activity -->
-            <section class="activity-section">
-                <div class="activity-grid">
-                    <div class="activity-card">
-                        <div class="card-header">
-                            <h3>Recent Activity</h3>
-                            <a href="#" class="view-all">View All</a>
-                        </div>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>New student registered - Adeola Johnson</p>
-                                    <span class="activity-time">2 hours ago</span>
-                                </div>
+            <div class="page-section">
+                <div class="activities-categories">
+                    <div class="category-cards">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-futbol"></i>
                             </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-file-upload"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Results uploaded for SS3 Mathematics</p>
-                                    <span class="activity-time">Yesterday</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Low attendance alert for JSS2B</p>
-                                    <span class="activity-time">2 days ago</span>
-                                </div>
+                            <div class="category-info">
+                                <h3>Sports</h3>
+                                <p>Football, Basketball, Athletics</p>
+                                <span class="activity-count">8 Activities</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="quick-actions-card">
-                        <div class="card-header">
-                            <h3>Quick Actions</h3>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="category-info">
+                                <h3>Music & Arts</h3>
+                                <p>Choir, Band, Drama</p>
+                                <span class="activity-count">6 Activities</span>
+                            </div>
                         </div>
-                        <div class="actions-grid">
-                            <a href="students.html" class="action-btn">
-                                <i class="fas fa-user-plus"></i>
-                                <span>Add Student</span>
-                            </a>
-                            <a href="scoresheet.html" class="action-btn">
-                                <i class="fas fa-file-upload"></i>
-                                <span>Upload Results</span>
-                            </a>
-                            <a href="broadsheet.html" class="action-btn">
-                                <i class="fas fa-print"></i>
-                                <span>Print Broadsheet</span>
-                            </a>
-                            <a href="e-learning.html" class="action-btn">
-                                <i class="fas fa-video"></i>
-                                <span>Add E-Learning</span>
-                            </a>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="category-info">
+                                <h3>Clubs</h3>
+                                <p>Debate, Science, ICT Club</p>
+                                <span class="activity-count">12 Clubs</span>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="category-info">
+                                <h3>Events</h3>
+                                <p>Cultural Day, Sports Day</p>
+                                <span class="activity-count">5 Events</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <div class="upcoming-activities">
+                    <h3>Upcoming Activities</h3>
+                    <div class="activities-list">
+                        <div class="activity-item">
+                            <div class="activity-date">
+                                <span class="date-day">24</span>
+                                <span class="date-month">MAR</span>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Inter-house Sports Competition</h4>
+                                <p>Annual sports competition between school houses</p>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 8:00 AM - 4:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> School Field</span>
+                                </div>
+                            </div>
+                            <div class="activity-actions">
+                                <button class="secondary"><i class="fas fa-edit"></i></button>
+                                <button class="danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-date">
+                                <span class="date-day">15</span>
+                                <span class="date-month">APR</span>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Cultural Day Celebration</h4>
+                                <p>Showcasing diverse cultural heritage of students</p>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 9:00 AM - 2:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> School Hall</span>
+                                </div>
+                            </div>
+                            <div class="activity-actions">
+                                <button class="secondary"><i class="fas fa-edit"></i></button>
+                                <button class="danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('addActivityBtn').addEventListener('click', function() {
+            SchoolManagement.showNotification('Add Activity form would open here', 'info');
+        });
+    </script>
 </body>
 </html>

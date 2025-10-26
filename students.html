@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Faith Academy Ogba</title>
+    <title>Students | Faith Academy Ogba</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="sidebar">
+        <!-- Same sidebar as index.html -->
         <div class="logo">
             <img src="logo.jpg" alt="FA Logo">
             <h2>FA OGBA</h2>
@@ -120,19 +121,14 @@
         <header>
             <div class="header-left">
                 <button class="toggle-menu"><i class="fas fa-bars"></i></button>
-                <h1>Dashboard Module</h1>
-                <p>New summary information about your school.</p>
+                <h1>Students Management</h1>
             </div>
             <div class="header-right">
                 <div class="search-box">
-                    <input type="text" placeholder="Type here to search...">
+                    <input type="text" placeholder="Search students...">
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="user-info">
-                    <div class="notification">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count">3</span>
-                    </div>
                     <span>Yekini Damilola</span>
                     <img src="img/user.png" alt="User">
                 </div>
@@ -140,122 +136,85 @@
         </header>
 
         <div class="content-wrapper">
-            <!-- Quick Stats Section -->
-            <section class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Total Students</h3>
-                            <p class="stat-number">218</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 12% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon male">
-                            <i class="fas fa-male"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Male Students</h3>
-                            <p class="stat-number">98</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 5% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon female">
-                            <i class="fas fa-female"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Female Students</h3>
-                            <p class="stat-number">120</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 8% from last term</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Teachers</h3>
-                            <p class="stat-number">35</p>
-                            <p class="stat-change"><i class="fas fa-arrow-up"></i> 2 new this term</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div class="page-actions">
+                <h2>Manage Students</h2>
+                <button id="addStudentBtn"><i class="fas fa-plus"></i> Add New Student</button>
+            </div>
 
-            <!-- Recent Activity -->
-            <section class="activity-section">
-                <div class="activity-grid">
-                    <div class="activity-card">
-                        <div class="card-header">
-                            <h3>Recent Activity</h3>
-                            <a href="#" class="view-all">View All</a>
-                        </div>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>New student registered - Adeola Johnson</p>
-                                    <span class="activity-time">2 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-file-upload"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Results uploaded for SS3 Mathematics</p>
-                                    <span class="activity-time">Yesterday</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Low attendance alert for JSS2B</p>
-                                    <span class="activity-time">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="page-section">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Class:</label>
+                        <select id="classFilter">
+                            <option value="">All Classes</option>
+                            <option value="JSS1">JSS 1</option>
+                            <option value="JSS2">JSS 2</option>
+                            <option value="JSS3">JSS 3</option>
+                            <option value="SS1">SS 1</option>
+                            <option value="SS2">SS 2</option>
+                            <option value="SS3">SS 3</option>
+                        </select>
                     </div>
-                    
-                    <div class="quick-actions-card">
-                        <div class="card-header">
-                            <h3>Quick Actions</h3>
-                        </div>
-                        <div class="actions-grid">
-                            <a href="students.html" class="action-btn">
-                                <i class="fas fa-user-plus"></i>
-                                <span>Add Student</span>
-                            </a>
-                            <a href="scoresheet.html" class="action-btn">
-                                <i class="fas fa-file-upload"></i>
-                                <span>Upload Results</span>
-                            </a>
-                            <a href="broadsheet.html" class="action-btn">
-                                <i class="fas fa-print"></i>
-                                <span>Print Broadsheet</span>
-                            </a>
-                            <a href="e-learning.html" class="action-btn">
-                                <i class="fas fa-video"></i>
-                                <span>Add E-Learning</span>
-                            </a>
-                        </div>
+                    <div class="filter-group">
+                        <label>Gender:</label>
+                        <select id="genderFilter">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                     </div>
                 </div>
-            </section>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Class</th>
+                                <th>Admission Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTableBody">
+                            <tr>
+                                <td>FA001</td>
+                                <td>Adeola Johnson</td>
+                                <td>Female</td>
+                                <td>JSS 1A</td>
+                                <td>2023-09-01</td>
+                                <td><span class="status active">Active</span></td>
+                                <td class="table-actions">
+                                    <button class="secondary"><i class="fas fa-edit"></i></button>
+                                    <button class="danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FA002</td>
+                                <td>Chinedu Okoro</td>
+                                <td>Male</td>
+                                <td>SS 2B</td>
+                                <td>2022-09-01</td>
+                                <td><span class="status active">Active</span></td>
+                                <td class="table-actions">
+                                    <button class="secondary"><i class="fas fa-edit"></i></button>
+                                    <button class="danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('addStudentBtn').addEventListener('click', function() {
+            SchoolManagement.showNotification('Add Student form would open here', 'info');
+        });
+    </script>
 </body>
 </html>
